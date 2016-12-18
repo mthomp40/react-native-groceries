@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase'
-import { addItemSuccess, removeItemSuccess, goOnline, goOffline } from './actions/items'
+import { goOnline, goOffline } from './actions/items'
 
 import config from '../config'
 
@@ -14,11 +14,11 @@ const connectedRef = firebaseApp.database().ref('.info/connected')
 
 export function syncFirebase(store) {
   itemsRef.on('child_added', (snapshot) => {
-    store.dispatch(addItemSuccess(snapshot.val()))
+    //store.dispatch(addItemSuccess(snapshot.val()))
   })
 
   itemsRef.on('child_removed', (snapshot) => {
-    store.dispatch(removeItemSuccess(snapshot.val().id))
+    //store.dispatch(removeItemSuccess(snapshot.val().id))
   })
 
   connectedRef.on('value', snap => {
